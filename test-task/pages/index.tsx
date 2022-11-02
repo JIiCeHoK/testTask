@@ -8,9 +8,14 @@ import Projects from "../components/mainContent/Projects";
 import Budget from "../components/mainContent/Budget";
 import Navigation from "../components/Navigation";
 
+interface Ititle {
+    id: string;
+    titleName: string;
+}
+
 export default function Home() {
     const [selectedElement, setSelectedElement] = useState("progress");
-    const titles: Array<Object> = [
+    const titles: Array<Ititle> = [
         {
             id: "progress",
             titleName: "Ход исполнения Программы развития",
