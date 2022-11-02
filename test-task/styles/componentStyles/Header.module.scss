@@ -1,6 +1,11 @@
 @import "../varibles.scss";
 
-.container{
+.container {
     background-color: $color-blue-deep;
     color: $color-white;
+    padding: 12px 20px;
+}
+
+.title {
+    width: 10%;
 }

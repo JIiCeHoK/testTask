@@ -5,30 +5,30 @@ export default function SideMenu() {
     return (
         <div className={styles.container}>
             <div>
-                <h3>О программе</h3>
-                <h4>Ключевые индикаторы программы</h4>
+                <span className={styles.h3}>О программе</span>
+                <span className={styles.h4}>Ключевые индикаторы программы</span>
             </div>
             <div>
-                <h3>Новости</h3>
+                <span className={styles.h3}>Новости</span>
             </div>
             <div>
-                <h3>Документы</h3>
+                <span className={styles.h3}>Документы</span>
             </div>
             <div>
-                <h3>Управление бюджетом</h3>
-                <h4>Отчёты по бюджету</h4>
+                <span className={styles.h3}>Управление бюджетом</span>
+                <span className={styles.h4}>Отчёты по бюджету</span>
             </div>
             <div>
-                <h3>Стратегические проекты</h3>
+                <span className={styles.h3}>Стратегические проекты</span>
             </div>
             <div>
-                <h3>Показатели</h3>
+                <span className={styles.h3}>Показатели</span>
             </div>
             <div>
-                <h3>Политики развития</h3>
+                <span className={styles.h3}>Политики развития</span>
             </div>
             <div>
-                <span>Консорциумы</span>
+                <span className={styles.h3}>Консорциумы</span>
             </div>
         </div>
     );
