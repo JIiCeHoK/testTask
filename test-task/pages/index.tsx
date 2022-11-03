@@ -1,12 +1,13 @@
-import styles from "../styles/Home.module.scss";
 import Image from "next/image";
-
-import Back from "../assets/images/back.png";
 import { useState } from "react";
+
 import Progress from "../components/mainContent/Progress";
 import Projects from "../components/mainContent/Projects";
 import Budget from "../components/mainContent/Budget";
 import Navigation from "../components/Navigation";
+
+import styles from "../styles/Home.module.scss";
+import Back from "../assets/images/back.png";
 
 interface Ititle {
     id: string;
@@ -29,7 +30,6 @@ export default function Home() {
             titleName: "Освоение бюджета по Программе развития 2021-2030 гг.",
         },
     ];
-    console.log(selectedElement);
     return (
         <div className={styles.container}>
             <div className={styles.top}>
@@ -39,21 +39,21 @@ export default function Home() {
                 </div>
                 <Navigation
                     titles={titles}
+                    selectedElement={selectedElement}
                     setSelectedElement={setSelectedElement}
                 />
             </div>
-            <div>
-                {(() => {
-                    switch (selectedElement) {
-                        case "progress":
-                            return <Progress />;
-                        case "projects":
-                            return <Projects />;
-                        case "budget":
-                            return <Budget />;
-                    }
-                })()}
-            </div>
+
+            {(() => {
+                switch (selectedElement) {
+                    case "progress":
+                        return <Progress />;
+                    case "projects":
+                        return <Projects />;
+                    case "budget":
+                        return <Budget />;
+                }
+            })()}
         </div>
     );
 }
