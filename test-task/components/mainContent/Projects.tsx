@@ -47,6 +47,17 @@ const mockData = [
                     ],
                 ],
             },
+            DetailsTypeFinancing: {
+                columns: [
+                    "Тип финансирования",
+                    "Плановое количество проектов",
+                    "Одобренное количество проектов на ЭГ",
+                ],
+                rows: [
+                    ["Базовая часть", "3", "2"],
+                    ["Специальная часть", "9", "10"],
+                ],
+            },
         },
     },
 ];
@@ -80,7 +91,9 @@ export default function Projects() {
                         Детализация по типу финансирования
                     </Accordion.Header>
                     <Accordion.Body>
-                        
+                        <CustomGrid
+                            data={mockData[0][2022].DetailsTypeFinancing}
+                        />
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
@@ -93,17 +106,13 @@ export default function Projects() {
                     <Accordion.Header>
                         Детализация по стратегическим проектам
                     </Accordion.Header>
-                    <Accordion.Body>
-                        {/* <CustomGrid /> */}
-                    </Accordion.Body>
+                    <Accordion.Body>{/* <CustomGrid /> */}</Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="3">
                     <Accordion.Header>
                         Детализация по типу финансирования
                     </Accordion.Header>
-                    <Accordion.Body>
-                        {/* <CustomGrid /> */}
-                    </Accordion.Body>
+                    <Accordion.Body>{/* <CustomGrid /> */}</Accordion.Body>
                 </Accordion.Item>
             </Accordion>
         </div>

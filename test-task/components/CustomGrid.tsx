@@ -7,19 +7,25 @@ export default function CustomGrid(props: {
 }) {
     return (
         <>
-            <div className={styles.container_columns}>
-                {props.data.columns.map((column: string) => (
-                    <div key={column}>{column}</div>
-                ))}
-            </div>
-
-            {props.data.rows.map((row: string[]) => (
-                <div key={row[0]} className={styles.container_row}>
-                    {row.map((text: string) => (
-                        <div key={text}>{text}</div>
+            <table className={styles.container_table}>
+                <tr>
+                    {props.data.columns.map((column: string) => (
+                        <th key={column} className={styles.td}>
+                            {column}
+                        </th>
                     ))}
-                </div>
-            ))}
+                </tr>
+
+                {props.data.rows.map((row: string[]) => (
+                    <tr key={row[0]}>
+                        {row.map((text: string) => (
+                            <td key={text} className={styles.tr}>
+                                {text}
+                            </td>
+                        ))}
+                    </tr>
+                ))}
+            </table>
         </>
     );
 }
