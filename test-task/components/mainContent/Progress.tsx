@@ -6,6 +6,8 @@ import timeScale from "../../assets/images/шкала времени.png";
 import left from "../../assets/icons/left.png";
 import right from "../../assets/icons/right.png";
 
+import TimeStepper from "../TimeStepper";
+
 interface Iboard {
     id: number;
     date: string;
@@ -44,10 +46,17 @@ export default function Progress() {
                     <div key={board.id} className={styles.container_board}>
                         <div>{board.date}</div>
                         <div>{board.text}</div>
+                        {/* <div className={styles.step_container}>
+                            <div
+                                className={styles.step_container_ellipse}
+                            ></div>
+                            <div className={styles.step_container_line}></div>
+                        </div> */}
                     </div>
                 ))}
                 <Image src={right} alt="право" />
             </div>
+            {/* <TimeStepper /> */}
             <Image src={timeScale} alt="шкала времени" />
         </>
     );

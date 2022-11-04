@@ -1,0 +1,15 @@
+@import "../varibles.scss";
+
+.container {
+    &_columns {
+        display: flex;
+        font-family: "Open Sans";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        letter-spacing: -0.2px;
+        color: $color-gray-deep;
+    }
+}
