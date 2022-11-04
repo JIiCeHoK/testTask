@@ -11,13 +11,15 @@ export default function CustomGrid(props: {
                 {props.data.columns.map((column: string) => (
                     <div key={column}>{column}</div>
                 ))}
-
-                {props.data.rows.map((row: string[]) => {
-                    row.map((rowData: string) => (
-                        <div key={rowData}>{rowData}</div>
-                    ));
-                })}
             </div>
+
+            {props.data.rows.map((row: string[]) => (
+                <div key={row[0]} className={styles.container_row}>
+                    {row.map((text: string) => (
+                        <div key={text}>{text}</div>
+                    ))}
+                </div>
+            ))}
         </>
     );
 }
