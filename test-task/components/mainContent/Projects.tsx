@@ -106,15 +106,27 @@ export default function Projects() {
                     <Accordion.Header>
                         Детализация по стратегическим проектам
                     </Accordion.Header>
-                    <Accordion.Body>{/* <CustomGrid /> */}</Accordion.Body>
+                    <Accordion.Body>
+                        <CustomGrid
+                            data={mockData[0][2022].DetailsStrategicProjects}
+                        />
+                    </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="3">
                     <Accordion.Header>
                         Детализация по типу финансирования
                     </Accordion.Header>
-                    <Accordion.Body>{/* <CustomGrid /> */}</Accordion.Body>
+                    <Accordion.Body>
+                        <CustomGrid
+                            data={mockData[0][2022].DetailsTypeFinancing}
+                        />
+                    </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
+            <div className={styles.title}>
+                Распределение проектов по типам к общему числу проектов{" "}
+            </div>
+            <CustomDropdown />
         </div>
     );
 }
