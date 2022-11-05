@@ -1,0 +1,17 @@
+.legend {
+    &_ul {
+        list-style: none;
+    }
+    &_li {
+        display: flex;
+        align-items: center;
+        & b{
+            margin-right: 4px;
+        }
+    }
+    &_marker {
+        width: 34px;
+        height: 8px;
+        margin-right: 24px;
+    }
+}

@@ -9,17 +9,17 @@ export default function CustomGrid(props: {
         <>
             <table className={styles.container_table}>
                 <tr>
-                    {props.data.columns.map((column: string) => (
-                        <th key={column} className={styles.td}>
+                    {props.data.columns.map((column: string, index: number) => (
+                        <th key={index} className={styles.td}>
                             {column}
                         </th>
                     ))}
                 </tr>
 
-                {props.data.rows.map((row: string[]) => (
-                    <tr key={row[0]}>
-                        {row.map((text: string) => (
-                            <td key={text} className={styles.tr}>
+                {props.data.rows.map((row: string[], index: number) => (
+                    <tr key={index}>
+                        {row.map((text: string,index: number) => (
+                            <td key={index} className={styles.tr}>
                                 {text}
                             </td>
                         ))}

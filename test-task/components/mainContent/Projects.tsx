@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
-
-import styles from "../../styles/componentStyles/Projects.module.scss";
-
+import PieChartComponent from "../chartsComponents/PieChartComponent";
 import CustomDropdown from "../CustomDropdown";
 import CustomGrid from "../CustomGrid";
 
-const years = [2022, 2023];
+import styles from "../../styles/componentStyles/Projects.module.scss";
+
+const mockYears = [2022, 2023];
 
 interface IdataSelectedYear {
     PlannedNumberProjects: number;
@@ -131,18 +131,21 @@ const mockData = [
 ];
 
 export default function Projects() {
-    const [selectedYear, setSelectedYear] = useState(years[0]);
+    const [selectedYear, setSelectedYear] = useState(mockYears[0]);
     const x = mockData.find((el) => el.year === Number(selectedYear));
-    const [data, setData] = useState<IdataSelectedYear>(x ? x.data : {});
-
+    //Дочинить типы
+    const [data, setData] = useState<IdataSelectedYear>(
+        x ? x.data : mockData[0].data
+    );
+    //Дочинить типы
     useEffect(() => {
-        setData(x ? x.data : {});
+        setData(x ? x.data : mockData[0].data);
     }, [selectedYear, x]);
 
     return (
         <div className={styles.container}>
             <CustomDropdown
-                years={years}
+                years={mockYears}
                 selectedYear={selectedYear}
                 setSelectedYear={setSelectedYear}
             />
@@ -198,10 +201,11 @@ export default function Projects() {
                 Распределение проектов по типам к общему числу проектов{" "}
             </div>
             <CustomDropdown
-                years={years}
+                years={mockYears}
                 selectedYear={selectedYear}
                 setSelectedYear={setSelectedYear}
             />
+            <PieChartComponent />
         </div>
     );
 }
