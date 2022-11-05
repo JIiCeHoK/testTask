@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 
 import styles from "../../styles/componentStyles/Projects.module.scss";
@@ -6,9 +6,26 @@ import styles from "../../styles/componentStyles/Projects.module.scss";
 import CustomDropdown from "../CustomDropdown";
 import CustomGrid from "../CustomGrid";
 
+const years = [2022, 2023];
+
+interface IdataSelectedYear {
+    PlannedNumberProjects: number;
+    ApprovedProjects: number;
+    ApprovedProjectPortfolios: number;
+    DetailsStrategicProjects: {
+        columns: string[];
+        rows: Array<string[]>;
+    };
+    DetailsTypeFinancing: {
+        columns: string[];
+        rows: Array<string[]>;
+    };
+}
+
 const mockData = [
     {
-        2022: {
+        year: 2022,
+        data: {
             PlannedNumberProjects: 215,
             ApprovedProjects: 118,
             ApprovedProjectPortfolios: 97,
@@ -60,20 +77,82 @@ const mockData = [
             },
         },
     },
+    {
+        year: 2023,
+        data: {
+            PlannedNumberProjects: 210,
+            ApprovedProjects: 118,
+            ApprovedProjectPortfolios: 97,
+            DetailsStrategicProjects: {
+                columns: [
+                    "№",
+                    "Направления СП",
+                    "Плановое количество проектов",
+                    "Одобренное количество проектов на ЭГ",
+                ],
+                rows: [
+                    [
+                        "1.",
+                        "Материалы и технологии для водородной и ядерной энергетики",
+                        "3",
+                        "2",
+                    ],
+                    [
+                        "2.",
+                        "Дизайн и технологии функциональных материалов и систем",
+                        "9",
+                        "10",
+                    ],
+                    [
+                        "3.",
+                        "Благополучие человека в условиях цифровой трансформации",
+                        "12",
+                        "11",
+                    ],
+                    ["4.", "Академическое превосходство", "27", "79"],
+                    [
+                        "5.",
+                        "Образование: кадры для научно-технологического прорыва",
+                        "15",
+                        "16",
+                    ],
+                ],
+            },
+            DetailsTypeFinancing: {
+                columns: [
+                    "Тип финансирования",
+                    "Плановое количество проектов",
+                    "Одобренное количество проектов на ЭГ",
+                ],
+                rows: [["Базовая часть", "3", "2"]],
+            },
+        },
+    },
 ];
 
 export default function Projects() {
-    const [selectedYear, setSelectedYear] = useState(mockData[0]);
+    const [selectedYear, setSelectedYear] = useState(years[0]);
+    const x = mockData.find((el) => el.year === Number(selectedYear));
+    const [data, setData] = useState<IdataSelectedYear>(x ? x.data : {});
+
+    useEffect(() => {
+        setData(x ? x.data : {});
+    }, [selectedYear, x]);
+
     return (
         <div className={styles.container}>
-            <CustomDropdown />
+            <CustomDropdown
+                years={years}
+                selectedYear={selectedYear}
+                setSelectedYear={setSelectedYear}
+            />
             <div className={styles.title}>
                 Плановое количество проектов программы
-                <span> - {selectedYear[2022].PlannedNumberProjects}</span>
+                <span> - {data.PlannedNumberProjects}</span>
             </div>
             <div className={styles.title}>
                 Одобренных проектов на ЭГ
-                <span> - {selectedYear[2022].ApprovedProjects}</span>
+                <span> - {data.ApprovedProjects}</span>
             </div>
             <Accordion flush>
                 <Accordion.Item eventKey="0">
@@ -81,9 +160,7 @@ export default function Projects() {
                         Детализация по стратегическим проектам
                     </Accordion.Header>
                     <Accordion.Body>
-                        <CustomGrid
-                            data={mockData[0][2022].DetailsStrategicProjects}
-                        />
+                        <CustomGrid data={data.DetailsStrategicProjects} />
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="1">
@@ -91,15 +168,13 @@ export default function Projects() {
                         Детализация по типу финансирования
                     </Accordion.Header>
                     <Accordion.Body>
-                        <CustomGrid
-                            data={mockData[0][2022].DetailsTypeFinancing}
-                        />
+                        <CustomGrid data={data.DetailsTypeFinancing} />
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
             <div className={styles.title}>
                 Одобренных портфелей проектов на ЭГ
-                <span> - {selectedYear[2022].ApprovedProjectPortfolios}</span>
+                <span> - {data.ApprovedProjectPortfolios}</span>
             </div>
             <Accordion flush>
                 <Accordion.Item eventKey="2">
@@ -107,9 +182,7 @@ export default function Projects() {
                         Детализация по стратегическим проектам
                     </Accordion.Header>
                     <Accordion.Body>
-                        <CustomGrid
-                            data={mockData[0][2022].DetailsStrategicProjects}
-                        />
+                        <CustomGrid data={data.DetailsStrategicProjects} />
                     </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="3">
@@ -117,16 +190,18 @@ export default function Projects() {
                         Детализация по типу финансирования
                     </Accordion.Header>
                     <Accordion.Body>
-                        <CustomGrid
-                            data={mockData[0][2022].DetailsTypeFinancing}
-                        />
+                        <CustomGrid data={data.DetailsTypeFinancing} />
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
             <div className={styles.title}>
                 Распределение проектов по типам к общему числу проектов{" "}
             </div>
-            <CustomDropdown />
+            <CustomDropdown
+                years={years}
+                selectedYear={selectedYear}
+                setSelectedYear={setSelectedYear}
+            />
         </div>
     );
 }
