@@ -1,130 +1,235 @@
 import React, { useEffect, useState } from "react";
-import Accordion from "react-bootstrap/Accordion";
 import PieChartComponent from "../chartsComponents/PieChartComponent";
 import CustomDropdown from "../CustomDropdown";
-import CustomGrid from "../CustomGrid";
+import AccordionComponent from "../AccordionComponent";
 
 import styles from "../../styles/componentStyles/Projects.module.scss";
 
-const mockYears = [2022, 2023];
+type Ttypes = "accordion" | "title";
 
 interface IdataSelectedYear {
-    PlannedNumberProjects: number;
-    ApprovedProjects: number;
-    ApprovedProjectPortfolios: number;
+    PlannedNumberProjects: {
+        type: Ttypes;
+        header: string;
+        value: number;
+    };
+    ApprovedProjects: {
+        type: Ttypes;
+        header: string;
+        value: number;
+    };
+    ApprovedProjectPortfolios: {
+        type: Ttypes;
+        header: string;
+        value: number;
+    };
     DetailsStrategicProjects: {
-        columns: string[];
-        rows: Array<string[]>;
+        type: Ttypes;
+        header: string;
+        data: {
+            columns: string[];
+            rows: Array<string[]>;
+        };
     };
     DetailsTypeFinancing: {
-        columns: string[];
-        rows: Array<string[]>;
+        type: Ttypes;
+        header: string;
+        data: {
+            columns: string[];
+            rows: Array<string[]>;
+        };
     };
 }
+
+const mockYears = [2022, 2023];
 
 const mockData = [
     {
         year: 2022,
         data: {
-            PlannedNumberProjects: 215,
-            ApprovedProjects: 118,
-            ApprovedProjectPortfolios: 97,
+            PlannedNumberProjects: {
+                type: "title",
+                header: "Плановое количество проектов программы",
+                value: 212,
+            },
+            ApprovedProjects: {
+                type: "title",
+                header: "Одобренных проектов на ЭГ",
+                value: 118,
+            },
             DetailsStrategicProjects: {
-                columns: [
-                    "№",
-                    "Направления СП",
-                    "Плановое количество проектов",
-                    "Одобренное количество проектов на ЭГ",
-                ],
-                rows: [
-                    [
-                        "1.",
-                        "Материалы и технологии для водородной и ядерной энергетики",
-                        "3",
-                        "2",
+                type: "accordion",
+                header: " Детализация по стратегическим проектам",
+                data: {
+                    columns: [
+                        "№",
+                        "Направления СП",
+                        "Плановое количество проектов",
+                        "Одобренное количество проектов на ЭГ",
                     ],
-                    [
-                        "2.",
-                        "Дизайн и технологии функциональных материалов и систем",
-                        "9",
-                        "10",
+                    rows: [
+                        [
+                            "1.",
+                            "Материалы и технологии для водородной и ядерной энергетики",
+                            "3",
+                            "2",
+                        ],
+                        [
+                            "2.",
+                            "Дизайн и технологии функциональных материалов и систем",
+                            "9",
+                            "10",
+                        ],
+                        [
+                            "3.",
+                            "Благополучие человека в условиях цифровой трансформации",
+                            "12",
+                            "11",
+                        ],
+                        [
+                            "3.",
+                            "Благополучие человека в условиях цифровой трансформации",
+                            "12",
+                            "11",
+                        ],
+                        [
+                            "3.",
+                            "Благополучие человека в условиях цифровой трансформации",
+                            "12",
+                            "11",
+                        ],
                     ],
-                    [
-                        "3.",
-                        "Благополучие человека в условиях цифровой трансформации",
-                        "12",
-                        "11",
-                    ],
-                    ["4.", "Академическое превосходство", "27", "79"],
-                    [
-                        "5.",
-                        "Образование: кадры для научно-технологического прорыва",
-                        "15",
-                        "16",
-                    ],
-                ],
+                },
             },
             DetailsTypeFinancing: {
-                columns: [
-                    "Тип финансирования",
-                    "Плановое количество проектов",
-                    "Одобренное количество проектов на ЭГ",
-                ],
-                rows: [
-                    ["Базовая часть", "3", "2"],
-                    ["Специальная часть", "9", "10"],
-                ],
+                type: "accordion",
+                header: "Детализация по типу финансирования",
+                data: {
+                    columns: [
+                        "Тип финансирования",
+                        "Плановое количество проектов",
+                        "Одобренное количество проектов на ЭГ",
+                    ],
+                    rows: [["Базовая часть", "3", "2"]],
+                },
+            },
+            ApprovedProjectPortfolios: {
+                type: "title",
+                header: "Одобренных портфелей проектов на ЭГ",
+                value: 97,
+            },
+            DetailsTypeFinancing2: {
+                type: "accordion",
+                header: "Детализация по типу финансирования",
+                data: {
+                    columns: [
+                        "Тип финансирования",
+                        "Плановое количество проектов",
+                        "Одобренное количество проектов на ЭГ",
+                    ],
+                    rows: [["Базовая часть", "3", "2"]],
+                },
+            },
+            DetailsTypeFinancing3: {
+                type: "accordion",
+                header: "Детализация по типу финансирования",
+                data: {
+                    columns: [
+                        "Тип финансирования",
+                        "Плановое количество проектов",
+                        "Одобренное количество проектов на ЭГ",
+                    ],
+                    rows: [["Базовая часть", "3", "2"]],
+                },
             },
         },
     },
+
     {
         year: 2023,
         data: {
-            PlannedNumberProjects: 210,
-            ApprovedProjects: 118,
-            ApprovedProjectPortfolios: 97,
+            PlannedNumberProjects: {
+                type: "title",
+                header: "Плановое количество проектов программы",
+                value: 2023,
+            },
+            ApprovedProjects: {
+                type: "title",
+                header: "Одобренных проектов на ЭГ",
+                value: 118,
+            },
             DetailsStrategicProjects: {
-                columns: [
-                    "№",
-                    "Направления СП",
-                    "Плановое количество проектов",
-                    "Одобренное количество проектов на ЭГ",
-                ],
-                rows: [
-                    [
-                        "1.",
-                        "Материалы и технологии для водородной и ядерной энергетики",
-                        "3",
-                        "2",
+                type: "accordion",
+                header: " Детализация по стратегическим проектам",
+                data: {
+                    columns: [
+                        "№",
+                        "Направления СП",
+                        "Плановое количество проектов",
+                        "Одобренное количество проектов на ЭГ",
                     ],
-                    [
-                        "2.",
-                        "Дизайн и технологии функциональных материалов и систем",
-                        "9",
-                        "10",
+                    rows: [
+                        [
+                            "1.",
+                            "Материалы и технологии для водородной и ядерной энергетики",
+                            "3",
+                            "2",
+                        ],
+                        [
+                            "2.",
+                            "Дизайн и технологии функциональных материалов и систем",
+                            "9",
+                            "10",
+                        ],
+                        [
+                            "3.",
+                            "Благополучие человека в условиях цифровой трансформации",
+                            "12",
+                            "11",
+                        ],
                     ],
-                    [
-                        "3.",
-                        "Благополучие человека в условиях цифровой трансформации",
-                        "12",
-                        "11",
-                    ],
-                    ["4.", "Академическое превосходство", "27", "79"],
-                    [
-                        "5.",
-                        "Образование: кадры для научно-технологического прорыва",
-                        "15",
-                        "16",
-                    ],
-                ],
+                },
             },
             DetailsTypeFinancing: {
-                columns: [
-                    "Тип финансирования",
-                    "Плановое количество проектов",
-                    "Одобренное количество проектов на ЭГ",
-                ],
-                rows: [["Базовая часть", "3", "2"]],
+                type: "accordion",
+                header: "Детализация по типу финансирования",
+                data: {
+                    columns: [
+                        "Тип финансирования",
+                        "Плановое количество проектов",
+                        "Одобренное количество проектов на ЭГ",
+                    ],
+                    rows: [["Базовая часть", "3", "2"]],
+                },
+            },
+            ApprovedProjectPortfolios: {
+                type: "title",
+                header: "Одобренных портфелей проектов на ЭГ",
+                value: 97,
+            },
+            DetailsTypeFinancing2: {
+                type: "accordion",
+                header: "Детализация по типу финансирования",
+                data: {
+                    columns: [
+                        "Тип финансирования",
+                        "Плановое количество проектов",
+                        "Одобренное количество проектов на ЭГ",
+                    ],
+                    rows: [["Базовая часть", "3", "2"]],
+                },
+            },
+            DetailsTypeFinancing3: {
+                type: "accordion",
+                header: "Детализация по типу финансирования",
+                data: {
+                    columns: [
+                        "Тип финансирования",
+                        "Плановое количество проектов",
+                        "Одобренное количество проектов на ЭГ",
+                    ],
+                    rows: [["Базовая часть", "3", "2"]],
+                },
             },
         },
     },
@@ -149,56 +254,31 @@ export default function Projects() {
                 selectedYear={selectedYear}
                 setSelectedYear={setSelectedYear}
             />
+
+            {Object.keys(data).map((element, index) => (
+                <>
+                    {(() => {
+                        switch (data[element].type) {
+                            case "title":
+                                return (
+                                    <div className={styles.title}>
+                                        {data[element].header}
+                                        <span>- {data[element].value}</span>
+                                    </div>
+                                );
+                            case "accordion":
+                                return (
+                                    <AccordionComponent
+                                        header={data[element].header}
+                                        data={data[element].data}
+                                    />
+                                );
+                        }
+                    })()}
+                </>
+            ))}
             <div className={styles.title}>
-                Плановое количество проектов программы
-                <span> - {data.PlannedNumberProjects}</span>
-            </div>
-            <div className={styles.title}>
-                Одобренных проектов на ЭГ
-                <span> - {data.ApprovedProjects}</span>
-            </div>
-            <Accordion flush>
-                <Accordion.Item eventKey="0">
-                    <Accordion.Header>
-                        Детализация по стратегическим проектам
-                    </Accordion.Header>
-                    <Accordion.Body>
-                        <CustomGrid data={data.DetailsStrategicProjects} />
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="1">
-                    <Accordion.Header>
-                        Детализация по типу финансирования
-                    </Accordion.Header>
-                    <Accordion.Body>
-                        <CustomGrid data={data.DetailsTypeFinancing} />
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
-            <div className={styles.title}>
-                Одобренных портфелей проектов на ЭГ
-                <span> - {data.ApprovedProjectPortfolios}</span>
-            </div>
-            <Accordion flush>
-                <Accordion.Item eventKey="2">
-                    <Accordion.Header>
-                        Детализация по стратегическим проектам
-                    </Accordion.Header>
-                    <Accordion.Body>
-                        <CustomGrid data={data.DetailsStrategicProjects} />
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="3">
-                    <Accordion.Header>
-                        Детализация по типу финансирования
-                    </Accordion.Header>
-                    <Accordion.Body>
-                        <CustomGrid data={data.DetailsTypeFinancing} />
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
-            <div className={styles.title}>
-                Распределение проектов по типам к общему числу проектов{" "}
+                Распределение проектов по типам к общему числу проектов
             </div>
             <CustomDropdown
                 years={mockYears}

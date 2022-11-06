@@ -36,14 +36,19 @@ export default function Budget() {
             <Accordion flush>
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>По соглашениям</Accordion.Header>
-                    <Accordion.Body></Accordion.Body>
+                    <Accordion.Body>
+                        <div className={styles.flex}>
+                            <StackedBarChartComponent />
+                            <StackedBarChartComponent />
+                        </div>
+                    </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
             <div className={styles.title}>
                 Одобренные средста в проектах определенного типа от общего
                 бюджета
             </div>
-            <BarChartComponent/>
+            <BarChartComponent />
         </div>
     );
 }
