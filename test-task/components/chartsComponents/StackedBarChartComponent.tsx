@@ -1,13 +1,5 @@
 import React from "react";
-import {
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-} from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Label, Tooltip, Legend } from "recharts";
 
 const data = [
     {
@@ -26,16 +18,24 @@ export default function StackedBarChartComponent() {
             width={500}
             height={300}
             data={data}
-            margin={{
-                top: 20,
-                right: 30,
-                left: 20,
-                bottom: 5,
-            }}
+            margin={{ top: 15, right: 30, left: 20, bottom: 5 }}
         >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
+            <XAxis
+                dataKey="name"
+                label={{
+                    value: "075-15-2021-1331 - Наука и университеты",
+                    position: "outside",
+                    textAnchor: "middle",
+                }}
+            />
+            <YAxis >
+                <Label
+                    value="Pages of my website"
+                    offset={0}
+                    angle={-90}
+                    position="center"
+                />
+            </YAxis>
             <Tooltip />
             <Legend />
             <Bar dataKey="pv4" stackId="a" fill="#0A0052" />

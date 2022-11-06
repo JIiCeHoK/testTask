@@ -26,11 +26,17 @@ export default function Budget() {
     const [selectedYear, setSelectedYear] = useState(mockYears[0]);
     return (
         <div className={styles.container}>
-            <CustomDropdown
-                years={mockYears}
-                selectedYear={selectedYear}
-                setSelectedYear={setSelectedYear}
-            />
+            <div className={styles.flex}>
+                <CustomDropdown
+                    years={mockYears}
+                    selectedYear={selectedYear}
+                    setSelectedYear={setSelectedYear}
+                />
+                <div className={styles.markerTitle}>
+                    *Информация представлена по состоянию на 20.09.2022
+                </div>
+            </div>
+
             <StackedBarChartComponent />
             <div className={styles.title}>Детализация</div>
             <Accordion flush>

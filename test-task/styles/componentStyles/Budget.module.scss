@@ -5,14 +5,22 @@
     padding-top: 24px;
 }
 
-.flex{
+.flex {
     display: flex;
 }
 
+.markerTitle {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $color-gray;
+
+    align-self: center;
+    padding-left: 22px;
+}
+
 .title {
-    font-family: "Open Sans";
     margin: 24px 0px;
-    font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 20px;

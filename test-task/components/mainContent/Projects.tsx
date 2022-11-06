@@ -255,7 +255,7 @@ export default function Projects() {
                 setSelectedYear={setSelectedYear}
             />
 
-            {Object.keys(data).map((element, index) => (
+            {Object.keys(data).map((element) => (
                 <>
                     {(() => {
                         switch (data[element].type) {

@@ -7,32 +7,33 @@ import {
     CartesianGrid,
     Tooltip,
     ResponsiveContainer,
+    Label,
 } from "recharts";
 
 const data = [
     {
         name: "Социальный 3 шт",
-        uv: 150,
+        млн: 150,
     },
     {
         name: "Организационный 4 шт ",
-        uv: 80,
+        млн: 80,
     },
     {
         name: " Научный 6 шт",
-        uv: 50,
+        млн: 50,
     },
     {
         name: "Образовательный 8 шт",
-        uv: 120,
+        млн: 120,
     },
     {
         name: "Предпринимательский 10 шт",
-        uv: 70,
+        млн: 70,
     },
     {
         name: "Инфраструктурный 12 шт",
-        uv: 90,
+        млн: 90,
     },
 ];
 
@@ -53,12 +54,18 @@ export default function BarChartComponent() {
                         bottom: 5,
                     }}
                 >
-                    <CartesianGrid strokeDasharray="4 2" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
+                    <CartesianGrid strokeDasharray="8" />
+                    <XAxis dataKey="name"></XAxis>
+                    <YAxis
+                        label={{
+                            value: "Бюджет, млн. руб",
+                            angle: -90,
+                            position: "inside",
+                            textAnchor: "middle",
+                        }}
+                    />
                     <Tooltip />
-
-                    <Bar dataKey="uv" stackId="a" fill="#305FFD" />
+                    <Bar dataKey="млн" stackId="a" fill="#305FFD" />
                 </BarChart>
             </ResponsiveContainer>
         </div>
