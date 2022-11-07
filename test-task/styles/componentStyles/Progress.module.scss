@@ -3,14 +3,14 @@
 .container {
     width: 100%;
     display: flex;
-    padding: 94px 0px 40px 0px;
+    padding: 94px 85px 40px;
 
-    & :first-child {
+    & img {
         align-self: center;
     }
 
-    & :last-child {
-        align-self: center;
+    & img:last-child {
+        transform: scale(-1, -1);
     }
 
     &_board {
@@ -40,11 +40,13 @@
 
 .step_container {
     display: flex;
+
     &_ellipse {
         width: 14px;
         height: 14px;
         background-color: $color-gray-light;
     }
+    
     &_line {
         width: 100%;
         height: 2px;

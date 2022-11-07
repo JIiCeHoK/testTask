@@ -1,5 +1,10 @@
 @import "../varibles.scss";
 
 .container {
+    height: 100%;
     display: flex;
+
+    &_content {
+        width: 100%;
+    }
 }

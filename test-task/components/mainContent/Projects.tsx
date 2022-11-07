@@ -239,7 +239,7 @@ export default function Projects() {
     const [selectedYear, setSelectedYear] = useState(mockYears[0]);
     const x = mockData.find((el) => el.year === Number(selectedYear));
     //Дочинить типы
-    const [data, setData] = useState<IdataSelectedYear>(
+    const [data, setData] = useState(
         x ? x.data : mockData[0].data
     );
     //Дочинить типы
