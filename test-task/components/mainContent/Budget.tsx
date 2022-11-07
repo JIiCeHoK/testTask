@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomDropdown from "../CustomDropdown";
 import Accordion from "react-bootstrap/Accordion";
 import StackedBarChartComponent from "../chartsComponents/StackedBarChartComponent";
@@ -24,6 +24,15 @@ const mockData = [
 
 export default function Budget() {
     const [selectedYear, setSelectedYear] = useState(mockYears[0]);
+    const x = mockData.find((el) => el.year === Number(selectedYear));
+    //Дочинить типы
+    const [data, setData] = useState(
+        x ? x.data : mockData[0].data
+    );
+    //Дочинить типы
+    useEffect(() => {
+        setData(x ? x.data : mockData[0].data);
+    }, [selectedYear, x]);
     return (
         <div className={styles.container}>
             <div className={styles.flex}>

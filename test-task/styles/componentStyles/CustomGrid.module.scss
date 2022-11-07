@@ -3,31 +3,23 @@
 .container {
     &_columns {
         display: flex;
-        font-family: "Open Sans";
-        font-style: normal;
         font-weight: 600;
         font-size: 16px;
         line-height: 20px;
         text-align: center;
-        letter-spacing: -0.2px;
         color: $color-gray-deep;
     }
     &_row {
         display: flex;
-        font-family: "Open Sans";
-        font-style: normal;
         font-weight: 400;
         font-size: 14px;
         line-height: 20px;
         text-align: center;
-        letter-spacing: -0.2px;
         color: $color-gray-deep;
     }
 }
 
 .table {
-    font-family: "Open Sans";
-    font-style: normal;
     font-weight: 400;
     border-collapse: collapse;
     width: 100%;
@@ -39,7 +31,6 @@
     border-bottom: 1px solid $color-gray-deep;
     font-size: 16px;
     line-height: 20px;
-    letter-spacing: -0.2px;
     color: $color-gray-deep;
 }
 
@@ -48,7 +39,6 @@
     font-size: 14px;
     line-height: 20px;
     text-align: center;
-    letter-spacing: -0.2px;
     color: $color-gray-deep;
     border-bottom: 1px solid $color-gray-light;
 }

@@ -15,10 +15,10 @@ const data = [
 export default function StackedBarChartComponent() {
     return (
         <BarChart
-            width={500}
+            width={300}
             height={300}
             data={data}
-            margin={{ top: 15, right: 30, left: 20, bottom: 5 }}
+            margin={{ top: 15, right: 40, left: 20, bottom: 5 }}
         >
             <XAxis
                 dataKey="name"
@@ -28,9 +28,9 @@ export default function StackedBarChartComponent() {
                     textAnchor: "middle",
                 }}
             />
-            <YAxis >
+            <YAxis domain={[0, "dataMax"]} tickCount={1}>
                 <Label
-                    value="Pages of my website"
+                    value="Бюджет, млн. руб"
                     offset={0}
                     angle={-90}
                     position="center"

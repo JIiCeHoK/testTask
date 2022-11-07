@@ -16,17 +16,12 @@
     &_board {
         margin: 0px 40px;
         max-width: 232px;
-
-        font-family: "Open Sans";
-        font-style: normal;
         font-weight: 400;
         font-size: 16px;
         line-height: 22px;
         color: $color-gray-deep;
 
         & :first-child {
-            font-family: "Open Sans";
-            font-style: normal;
             font-weight: 600;
             font-size: 18px;
             line-height: 16px;
