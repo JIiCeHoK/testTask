@@ -1,0 +1,45 @@
+@import "../varibles.scss";
+
+.container {
+    &_columns {
+        display: flex;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: $color-gray-deep;
+    }
+    
+    &_row {
+        display: flex;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        color: $color-gray-deep;
+    }
+}
+
+.table {
+    font-weight: 400;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.td {
+    padding: 16px 12px;
+    text-align: center;
+    border-bottom: 1px solid $color-gray-deep;
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-gray-deep;
+}
+
+.tr {
+    padding: 16px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: $color-gray-deep;
+    border-bottom: 1px solid $color-gray-light;
+}

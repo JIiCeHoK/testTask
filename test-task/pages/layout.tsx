@@ -5,12 +5,12 @@ import styles from "../styles/componentStyles/Layout.module.scss";
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <>
-            <header>
-                <Header />
-            </header>
             <main className={styles.container}>
                 <SideMenu />
-                {children}
+                <div className={styles.container_content}>
+                    <Header />
+                    {children}
+                </div>
             </main>
         </>
     );

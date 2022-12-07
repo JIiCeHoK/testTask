@@ -1,0 +1,18 @@
+@import "../varibles.scss";
+
+.container {
+    padding-left: 50px;
+    padding-top: 24px;
+}
+
+.title {
+    margin: 24px 0px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color: $color-black;
+    
+    & span {
+        color: $color-blue;
+    }
+}
